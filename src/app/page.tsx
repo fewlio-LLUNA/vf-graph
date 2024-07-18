@@ -14,12 +14,20 @@ interface PlayData {
   volforce: number;
 }
 
+const getData = (key: string) => {
+  if (typeof window !== 'undefined') {
+    const item = localStorage.getItem(key)
+    return item ? item : ""
+  }
+  return ""
+}
+
 export default function Home() {
   const [firstIdPart, setFirstIdPart] = useState(
-    localStorage.getItem("firstIdPart") || ""
+    getData("firstIdPart")
   );
   const [secondIdPart, setSecondIdPart] = useState(
-    localStorage.getItem("secondIdPart") || ""
+    getData('secondIdPart')
   );
   const [playerData, setPlayerData] = useState<PlayData[] | null>(null);
   const [xAxis, setXAxis] = useState("playedDate");
