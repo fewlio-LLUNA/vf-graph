@@ -202,9 +202,13 @@ export default function Home() {
           </div>
         </div>
       )}
+      <div className="guide">
+        
+      </div>
       <div className="credit">
-        {/* ここにクレジット表記があります */}
-        Vaddict様のご協力によって公開しております。
+        このWEBアプリは
+        <a href="https://vaddict.b35.jp/">Vaddict</a>
+        様のご協力によって公開しております。
       </div>
     </div>
   );

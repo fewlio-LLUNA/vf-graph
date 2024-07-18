@@ -71,6 +71,11 @@ label {
   margin: 10px;
 }
 
+.credit{
+  padding: 30px;
+  text-align: center;
+}
+
 @media (prefers-color-scheme: dark) {
   body {
     background-color: #121212;
