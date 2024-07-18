@@ -18,8 +18,8 @@ body {
 
 img.titleLogo{
   padding: 30px;
-  width: 70%;
-  max-width: fit-content;
+  width: 50%;
+  max-width: 250px;
   text-align: center;
 }
 

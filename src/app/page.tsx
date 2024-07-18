@@ -202,6 +202,10 @@ export default function Home() {
           </div>
         </div>
       )}
+      <div className="credit">
+        {/* ここにクレジット表記があります */}
+        Vaddict様のご協力によって公開しております。
+      </div>
     </div>
   );
 }
