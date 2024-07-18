@@ -6,11 +6,6 @@ const corsHeaders = {
   "Access-Control-Allow-Headers": "Content-Type", // 許可するリクエストヘッダー
 };
 
-// リクエストヘッダーにContent-Type: "application/json"があると、preflightによりOPTIONSが必要
-export async function OPTIONS() {
-    return NextResponse.json({}, { headers: corsHeaders })
-}
-
 export const GET = async (req: NextRequest) => {
   const playerId = req.nextUrl.searchParams.get("player_id");
 
@@ -22,5 +17,5 @@ export const GET = async (req: NextRequest) => {
 
   // console.log(text);
 
-  return NextResponse.json({ text: text }, { status: 200 });
+  return NextResponse.json({ text: text }, { status: 200, headers: corsHeaders });
 };
