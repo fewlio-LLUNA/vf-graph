@@ -132,6 +132,7 @@ export default function Home() {
 
   return (
     <div className="App">
+      {/* eslint-disable-next-line @next/next/no-img-element */}
       <img src="/title.png" alt="Vaddict-GRAPH" className="titleLogo" />
       {/* <h1>Vaddict-GRAPH</h1> */}
       {playerName && <h2>- {playerName} さんのVF推移 -</h2>}
