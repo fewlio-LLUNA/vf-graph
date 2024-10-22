@@ -5,6 +5,7 @@ import { useEffect, useState } from "react";
 import { validateInput } from "@/validateInput";
 import { load } from "cheerio";
 import { Line } from "react-chartjs-2";
+import dayjs from "dayjs";
 
 Chart.register(...registerables);
 
@@ -117,6 +118,9 @@ export default function Home() {
         },
         ticks: {
           autoSkip: false,
+          font: {
+            size: 8,
+          },
         },
       },
       y: {
