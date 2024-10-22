@@ -108,3 +108,11 @@ label {
     background-color: #8f324c;
   }
 }
+
+.App {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  flex-direction: column;
+}
