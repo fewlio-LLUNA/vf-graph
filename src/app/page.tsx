@@ -67,7 +67,8 @@ export default function Home() {
         if (index === 0) return;
 
         const columns = $(row).find("td");
-        const playedDate = $(columns[0]).text();
+        const playedDateRaw = $(columns[0]).text();
+        const playedDate = playedDateRaw.slice(0, 10); // YYYY/MM/DD のみ抽出
         const playedCount = $(columns[1]).text();
         const volforce = $(columns[2]).text();
 
