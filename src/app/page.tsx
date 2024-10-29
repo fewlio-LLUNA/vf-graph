@@ -167,7 +167,22 @@ export default function Home() {
           />
         </label>
       </div>
+      <br></br>
       <div className="vfMaxMin">
+      <label>
+          VF最大値:
+          <select
+            value={yAxisMax}
+            onChange={(e) => setYAxisMax(Number(e.target.value))}
+          >
+            {Array.from({ length: 24 }, (_, i) => i).map((value) => (
+              <option key={value} value={value}>
+                {value}
+              </option>
+            ))}
+          </select>
+        </label>
+        <br></br>
         <label>
           VF最小値:
           <select
@@ -181,20 +196,8 @@ export default function Home() {
             ))}
           </select>
         </label>
-        <br />
-        <label>
-          VF最大値:
-          <select
-            value={yAxisMax}
-            onChange={(e) => setYAxisMax(Number(e.target.value))}
-          >
-            {Array.from({ length: 24 }, (_, i) => i).map((value) => (
-              <option key={value} value={value}>
-                {value}
-              </option>
-            ))}
-          </select>
-        </label>
+        
+        
       </div>
       <button className="execute" onClick={handleFetchData}>
         グラフ出力
