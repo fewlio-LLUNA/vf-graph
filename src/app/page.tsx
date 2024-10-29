@@ -175,7 +175,7 @@ export default function Home() {
             value={yAxisMax}
             onChange={(e) => setYAxisMax(Number(e.target.value))}
           >
-            {Array.from({ length: 24 }, (_, i) => i).map((value) => (
+            {Array.from({ length: 24 }, (_, i) => i).reverse().map((value) => (
               <option key={value} value={value}>
                 {value}
               </option>
@@ -189,7 +189,7 @@ export default function Home() {
             value={yAxisMin}
             onChange={(e) => setYAxisMin(Number(e.target.value))}
           >
-            {Array.from({ length: 24 }, (_, i) => i).map((value) => (
+            {Array.from({ length: 24 }, (_, i) => i).reverse().map((value) => (
               <option key={value} value={value}>
                 {value}
               </option>
