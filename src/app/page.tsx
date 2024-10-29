@@ -16,20 +16,16 @@ interface PlayData {
 }
 
 const getData = (key: string) => {
-  if (typeof window !== 'undefined') {
-    const item = localStorage.getItem(key)
-    return item ? item : ""
+  if (typeof window !== "undefined") {
+    const item = localStorage.getItem(key);
+    return item ? item : "";
   }
-  return ""
-}
+  return "";
+};
 
 export default function Home() {
-  const [firstIdPart, setFirstIdPart] = useState(
-    getData("firstIdPart")
-  );
-  const [secondIdPart, setSecondIdPart] = useState(
-    getData('secondIdPart')
-  );
+  const [firstIdPart, setFirstIdPart] = useState(getData("firstIdPart"));
+  const [secondIdPart, setSecondIdPart] = useState(getData("secondIdPart"));
   const [playerData, setPlayerData] = useState<PlayData[] | null>(null);
   const [xAxis, setXAxis] = useState("playedDate");
   const [error, setError] = useState<string | null>(null);
@@ -55,7 +51,7 @@ export default function Home() {
 
     try {
       const response = await fetch(url);
-      const {text} = await response.json();
+      const { text } = await response.json();
       const $ = load(text);
 
       console.log("Fetched HTML:", $.html());
@@ -109,7 +105,7 @@ export default function Home() {
     ],
   };
 
-  const options:ChartOptions<'line'> = {
+  const options: ChartOptions<"line"> = {
     scales: {
       x: {
         type: "category",
@@ -123,6 +119,18 @@ export default function Home() {
             size: 8,
           },
         },
+        min: playerData
+          ? xAxis === "playedCount"
+            ? playerData.find((item) => item.volforce >= yAxisMin)?.playedCount
+            : playerData.find((item) => item.volforce >= yAxisMin)?.playedDate
+          : undefined,
+        max: playerData
+          ? xAxis === "playedCount"
+            ? playerData.findLast((item) => item.volforce <= yAxisMax)
+                ?.playedCount
+            : playerData.findLast((item) => item.volforce <= yAxisMax)
+                ?.playedDate
+          : undefined,
       },
       y: {
         title: {
@@ -207,9 +215,7 @@ export default function Home() {
           </div>
         </div>
       )}
-      <div className="guide">
-        
-      </div>
+      <div className="guide"></div>
       <div className="credit">
         このWEBアプリは
         <a href="https://vaddict.b35.jp/">Vaddict</a>
