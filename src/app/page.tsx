@@ -125,7 +125,7 @@ export default function Home() {
         ticks: {
           autoSkip: false,
           font: {
-            size: 12,
+            size: 8,
           },
         },
         min: playerData
@@ -176,6 +176,7 @@ export default function Home() {
           />
         </label>
       </div>
+      <br></br>
       <div className="vfMaxMin">
       <label>
           VF最大値:
