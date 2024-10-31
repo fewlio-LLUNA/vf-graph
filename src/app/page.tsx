@@ -29,14 +29,23 @@ export default function Home() {
   const [playerData, setPlayerData] = useState<PlayData[] | null>(null);
   const [xAxis, setXAxis] = useState("playedDate");
   const [error, setError] = useState<string | null>(null);
-  const [yAxisMin, setYAxisMin] = useState(15);
-  const [yAxisMax, setYAxisMax] = useState(20);
+  const [yAxisMin, setYAxisMin] = useState<number>(
+    Number(localStorage.getItem("yAxisMin")) || 15
+  );
+  const [yAxisMax, setYAxisMax] = useState<number>(
+    Number(localStorage.getItem("yAxisMax")) || 20
+  );
   const [playerName, setPlayerName] = useState("");
 
   useEffect(() => {
     localStorage.setItem("firstIdPart", firstIdPart);
     localStorage.setItem("secondIdPart", secondIdPart);
   }, [firstIdPart, secondIdPart]);
+  
+  useEffect(() => {
+    localStorage.setItem("yAxisMin", yAxisMin.toString());
+    localStorage.setItem("yAxisMax", yAxisMax.toString());
+  }, [yAxisMin, yAxisMax]);
 
   const handleFetchData = async () => {
     if (!validateInput(firstIdPart, secondIdPart)) {
