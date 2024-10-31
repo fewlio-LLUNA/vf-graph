@@ -29,9 +29,23 @@ export default function Home() {
   const [playerData, setPlayerData] = useState<PlayData[] | null>(null);
   const [xAxis, setXAxis] = useState("playedDate");
   const [error, setError] = useState<string | null>(null);
-  const [yAxisMin, setYAxisMin] = useState(15);
-  const [yAxisMax, setYAxisMax] = useState(20);
+  const [yAxisMin, setYAxisMin] = useState<number>(() => {
+    const savedMin = localStorage.getItem("yAxisMin");
+    return savedMin ? Number(savedMin) : 15; // 初期値は15
+  });
+  const [yAxisMax, setYAxisMax] = useState<number>(() => {
+    const savedMax = localStorage.getItem("yAxisMax");
+    return savedMax ? Number(savedMax) : 20; // 初期値は20
+  });  
   const [playerName, setPlayerName] = useState("");
+
+  useEffect(() => {
+    localStorage.setItem("yAxisMin", yAxisMin.toString());
+  }, [yAxisMin]);
+  
+  useEffect(() => {
+    localStorage.setItem("yAxisMax", yAxisMax.toString());
+  }, [yAxisMax]);
 
   useEffect(() => {
     localStorage.setItem("firstIdPart", firstIdPart);
