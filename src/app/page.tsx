@@ -38,15 +38,6 @@ export default function Home() {
     localStorage.setItem("secondIdPart", secondIdPart);
   }, [firstIdPart, secondIdPart]);
 
-  useEffect(() => {
-    // クライアントサイドでのみ実行する処理
-    const storedMin = localStorage.getItem("yAxisMin");
-    const storedMax = localStorage.getItem("yAxisMax");
-  
-    if (storedMin) setYAxisMin(Number(storedMin));
-    if (storedMax) setYAxisMax(Number(storedMax));
-  }, []);
-
   const handleFetchData = async () => {
     if (!validateInput(firstIdPart, secondIdPart)) {
       return;
@@ -125,7 +116,7 @@ export default function Home() {
         ticks: {
           autoSkip: false,
           font: {
-            size: 8,
+            size: 12,
           },
         },
         min: playerData
@@ -176,7 +167,6 @@ export default function Home() {
           />
         </label>
       </div>
-      <br></br>
       <div className="vfMaxMin">
       <label>
           VF最大値:
