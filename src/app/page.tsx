@@ -29,28 +29,23 @@ export default function Home() {
   const [playerData, setPlayerData] = useState<PlayData[] | null>(null);
   const [xAxis, setXAxis] = useState("playedDate");
   const [error, setError] = useState<string | null>(null);
-  const [yAxisMin, setYAxisMin] = useState<number>(() => {
-    const savedMin = localStorage.getItem("yAxisMin");
-    return savedMin ? Number(savedMin) : 15; // 初期値は15
-  });
-  const [yAxisMax, setYAxisMax] = useState<number>(() => {
-    const savedMax = localStorage.getItem("yAxisMax");
-    return savedMax ? Number(savedMax) : 20; // 初期値は20
-  });  
+  const [yAxisMin, setYAxisMin] = useState(15);
+  const [yAxisMax, setYAxisMax] = useState(20);
   const [playerName, setPlayerName] = useState("");
-
-  useEffect(() => {
-    localStorage.setItem("yAxisMin", yAxisMin.toString());
-  }, [yAxisMin]);
-  
-  useEffect(() => {
-    localStorage.setItem("yAxisMax", yAxisMax.toString());
-  }, [yAxisMax]);
 
   useEffect(() => {
     localStorage.setItem("firstIdPart", firstIdPart);
     localStorage.setItem("secondIdPart", secondIdPart);
   }, [firstIdPart, secondIdPart]);
+
+  useEffect(() => {
+    // クライアントサイドでのみ実行する処理
+    const storedMin = localStorage.getItem("yAxisMin");
+    const storedMax = localStorage.getItem("yAxisMax");
+  
+    if (storedMin) setYAxisMin(Number(storedMin));
+    if (storedMax) setYAxisMax(Number(storedMax));
+  }, []);
 
   const handleFetchData = async () => {
     if (!validateInput(firstIdPart, secondIdPart)) {
