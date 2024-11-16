@@ -116,7 +116,7 @@ export default function Home() {
         ticks: {
           autoSkip: false,
           font: {
-            size: 12,
+            size: window.innerWidth <= 768 ? 8 : 10, // スマホ画面なら8、PC画面なら10
           },
         },
         min: playerData
@@ -142,6 +142,7 @@ export default function Home() {
       },
     },
   };
+
 
   return (
     <div className="App">
@@ -212,7 +213,7 @@ export default function Home() {
               プレー回数
             </button>
           </div>
-          <div style={{ width: "1000px", height: "500px" }}>
+          <div className="chart-container">
             <Line data={data} options={options} />
           </div>
         </div>

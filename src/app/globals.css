@@ -76,6 +76,13 @@ label {
   text-align: center;
 }
 
+.chart-container {
+  width: 1000px; /* PC用のデフォルトサイズ */
+  height: 500px; /* 固定サイズ */
+  margin: 0 auto; /* 中央揃え */
+}
+
+
 @media (prefers-color-scheme: dark) {
   body {
     background-color: #121212;
@@ -114,4 +121,19 @@ label {
   justify-content: center;
   align-items: center;
   flex-direction: column;
+}
+
+
+@media (max-width: 768px) {
+  .chart-container {
+    width: 110%; /* 画面幅に合わせる */
+    height: auto; /* 高さを自動調整 */
+    overflow-x: auto; /* 横スクロールを許可 */
+    margin: auto;
+  }
+
+  .chart-container canvas {
+    width: 100%;
+    height: auto; /* 高さを保持しつつ、比率を維持 */
+  }
 }
