@@ -116,7 +116,7 @@ export default function Home() {
         ticks: {
           autoSkip: false,
           font: {
-            size: window.innerWidth <= 768 ? 8 : 10, // スマホ画面なら8、PC画面なら10
+            size: typeof window !== "undefined" && window.innerWidth <= 768 ? 8 : 10,
           },
         },
         min: playerData
